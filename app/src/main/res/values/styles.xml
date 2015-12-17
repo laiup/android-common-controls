@@ -1,0 +1,89 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/white</item>
+        <!--<item name="android:textColorPrimary">@color/white</item>-->
+
+        <!-- use bellow attributes for no action bar-->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <!-- use bellow attribute for action mode overlay toolbar/tab bar-->
+        <item name="windowActionModeOverlay">true</item>
+
+        <!-- use bellow attribute for action mode style-->
+        <item name="android:actionModeStyle">@style/ActionModeStyle</item>
+        <item name="actionModeStyle">@style/ActionModeStyle</item>
+        <!--<item name="android:actionModeBackground">@color/orange_400</item>-->
+        <!--<item name="android:actionModeSplitBackground">@color/colorPrimaryDark</item>-->
+
+        <!-- use bellow attribute for close button of action mode -->
+        <item name="actionModeCloseButtonStyle">@style/CloseButtonStyle</item>
+        <item name="actionModeCloseDrawable">@drawable/ic_close</item>
+
+        <!-- use bellow attribute for three-dot button (button fro open menu) of action mode -->
+        <item name="android:actionOverflowButtonStyle">@style/OverFlowButtonStyle</item>
+    </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- Overflow Button (three dot) -->
+    <style name="OverFlowButtonStyle">
+        <item name="android:src">@drawable/sp_ico_share</item>
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:width">32dp</item>
+        <item name="android:height">32dp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:adjustViewBounds">true</item>
+    </style>
+    <!-- Action Mode Style -->
+    <style name="ActionModeStyle" parent="Base.Widget.AppCompat.ActionMode">
+        <item name="background">@color/colorPrimary</item>
+        <item name="height">@dimen/toolbar_height</item>
+    </style>
+
+    <style name="CloseButtonStyle">
+        <item name="android:height">48dp</item>
+        <item name="android:width">48dp</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:visibility">visible</item>
+        <item name="android:background">?android:selectableItemBackgroundBorderless</item>
+    </style>
+
+    <!-- Tab Layout -->
+    <style name="TabLayoutTheme" parent="Widget.Design.TabLayout">
+        <item name="tabMaxWidth">@dimen/tab_max_width</item>
+        <item name="tabIndicatorColor">@color/orange_400</item>
+        <item name="tabIndicatorHeight">4dp</item>
+        <item name="tabPaddingStart">12dp</item>
+        <item name="tabPaddingEnd">12dp</item>
+        <item name="tabBackground">?attr/selectableItemBackground</item>
+        <item name="tabTextAppearance">@style/TabTextAppearance</item>
+        <item name="tabSelectedTextColor">?android:textColorPrimary</item>
+    </style>
+    <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
+    <!-- Popup Style -->
+    <style name="ShowHideDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/scale_out_from_center</item>
+        <item name="android:windowExitAnimation">@anim/scale_in_to_center</item>
+    </style>
+    <style name="DialogSlideAnim" parent="@android:style/Theme.Dialog">
+        <item name="android:windowAnimationStyle">@style/ShowHideDialogAnimation</item>
+    </style>
+
+</resources>

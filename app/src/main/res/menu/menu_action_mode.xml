@@ -1,0 +1,29 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_mode_share"
+        android:orderInCategory="100"
+        android:title="@string/action_mode_share"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_mode_save"
+        android:orderInCategory="100"
+        android:title="@string/action_mode_save"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_mode_1"
+        android:orderInCategory="100"
+        android:title="@string/action_mode_share"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_mode_2"
+        android:orderInCategory="100"
+        android:title="@string/action_mode_share"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/help"
+        android:icon="@drawable/ic_bin"
+        android:title="@string/action_mode_delete"
+        app:showAsAction="always"
+        />
+</menu>

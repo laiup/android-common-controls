@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">laiup-common-controls</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title">Title</string>
+    <string name="sp_text_nickname">Hoang Ha</string>
+    <string name="sp_text_post_time">4 mins</string>
+    <string name="symbol_middle_dot">·</string>
+    <string name="sp_text_post_location">Da Nang, Vietnam</string>
+    <string name="sp_text_status">This is my dream office. I do everything and try my best to make this reality. Sometimes I feel very tired, but I\'ll never give up. Cuz\' I was born to be a great man.</string>
+    <string name="sp_text_like_count">32 likes</string>
+    <string name="sp_text_dislike">1k dislikes</string>
+    <string name="sp_text_latest_chat">What did you do yesterday night?</string>
+    <string name="text_popup_context_menu">Context menu ...</string>
+    <string name="hint_email">Email</string>
+    <string name="text_send">SEND</string>
+    <string name="text_cancel">CANCEL</string>
+    <string name="hint_archived_name">Archived name</string>
+    <string name="text_archived">ARCHIVED</string>
+    <string name="sp_text_notification">Hoang Ha has just commented on your post</string>
+    <string name="action_mode_share">Share this ...</string>
+    <string name="action_mode_delete">Delete</string>
+    <string name="action_mode_save">Save</string>
+</resources>
