@@ -21,7 +21,7 @@
         android:title="@string/action_mode_share"
         app:showAsAction="never" />
 
-    <item android:id="@+id/help"
+    <item android:id="@+id/action_mode_delete"
         android:icon="@drawable/ic_bin"
         android:title="@string/action_mode_delete"
         app:showAsAction="always"

@@ -94,6 +94,10 @@ public class NotificationFragment extends Fragment implements NotificationsAdapt
             @Override
             public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
                 switch (item.getItemId()) {
+                    case R.id.action_mode_delete:
+                        L.s(root, "Deleted");
+                        adapter.removeSelected();
+                        break;
                     case R.id.action_mode_share:
                         L.s(root, "Share");
                         mode.finish();
@@ -120,28 +124,21 @@ public class NotificationFragment extends Fragment implements NotificationsAdapt
         rvList.addOnItemTouchListener(new RecyclerTouchListener(getContext(), rvList, new ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                L.s(root, "OnClick " + position);
                 if(isOnSelectMode) {
-                    /*boolean currentState = adapter.getTracking().get(position);
-                    view.setSelected(!currentState);
-                    adapter.getTracking().set(position, !currentState);*/
                     adapter.setSelectedState(position);
+                } else {
+                    L.s(root, "OnClick " + position);
                 }
             }
 
             @Override
             public void onLongClick(View view, int position) {
-                L.m("OnLongClick " + position);
                 if(!isOnSelectMode) {
+                    L.m("OnLongClick " + position);
                     isOnSelectMode = true;
-                    /*adapter.initTrackingList();
-                    view.setSelected(true);*/
                     adapter.setSelectedState(position);
                     actionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
                 } else {
-                    /*boolean currentState = adapter.getTracking().get(position);
-                    view.setSelected(!currentState);
-                    adapter.getTracking().set(position, !currentState);*/
                     adapter.setSelectedState(position);
                 }
             }

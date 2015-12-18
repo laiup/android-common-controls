@@ -37,7 +37,7 @@
 
     <!-- Overflow Button (three dot) -->
     <style name="OverFlowButtonStyle">
-        <item name="android:src">@drawable/sp_ico_share</item>
+        <item name="android:src">@drawable/ico_finger_print</item>
         <item name="android:layout_width">32dp</item>
         <item name="android:layout_height">32dp</item>
         <item name="android:width">32dp</item>

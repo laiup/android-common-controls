@@ -116,6 +116,24 @@ public class NotificationsAdapter extends RecyclerView.Adapter {
         return true;
     }
 
+    /*
+     * Remove selected item
+     */
+    public void removeSelected() {
+        int i = 0, size = data.size();
+        while(i < size) {
+            if(tracking.get(i)) {
+                data.remove(i);
+                tracking.remove(i);
+                notifyItemRemoved(i);
+                size--;
+            } else {
+                i++;
+            }
+        }
+        dismissActionModeListener.onUnselectedAll();
+    }
+
     public interface DismissActionModeListener {
         void onUnselectedAll();
     }
