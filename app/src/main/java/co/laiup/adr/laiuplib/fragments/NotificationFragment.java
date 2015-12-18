@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -30,7 +31,7 @@ import co.laiup.adr.laiuplib.adapters.NotificationsAdapter;
 import co.laiup.adr.laiuplib.models.Friend;
 import co.laiup.adr.laiuplib.models.Notification;
 
-public class NotificationFragment extends Fragment {
+public class NotificationFragment extends Fragment implements NotificationsAdapter.DismissActionModeListener{
 
     // #root view
     private View root;
@@ -41,6 +42,13 @@ public class NotificationFragment extends Fragment {
     RecyclerView.LayoutManager layoutManager;
 
     ArrayList<Notification> notifications;
+
+    // #action mode
+    ActionMode actionMode;
+    ActionMode.Callback actionModeCallback;
+
+    // #tracking choice mode
+    private boolean isOnSelectMode = false;
 
     public NotificationFragment() {
         // Required empty public constructor
@@ -56,6 +64,7 @@ public class NotificationFragment extends Fragment {
         rvList = (RecyclerView) root.findViewById(R.id.recycler_view);
         notifications = new ArrayList<>();
         adapter = new NotificationsAdapter(getContext(), notifications);
+        adapter.setDismissActionModeListener(this);
         layoutManager = new LinearLayoutManager(getContext());
         rvList.setLayoutManager(layoutManager);
         rvList.setAdapter(adapter);
@@ -64,7 +73,7 @@ public class NotificationFragment extends Fragment {
         initData();
 
         // toolbar overlay for action mode (long click on recycler item)
-        final ActionMode.Callback actionModeCallback = new ActionMode.Callback() {
+        actionModeCallback = new ActionMode.Callback() {
             @Override
             public boolean onCreateActionMode(ActionMode mode, Menu menu) {
                 /*
@@ -102,6 +111,8 @@ public class NotificationFragment extends Fragment {
             @Override
             public void onDestroyActionMode(ActionMode mode) {
                 L.s(root, "Destroyed");
+                isOnSelectMode = false;
+                adapter.unselectedAllItem();
             }
         };
 
@@ -110,12 +121,29 @@ public class NotificationFragment extends Fragment {
             @Override
             public void onClick(View view, int position) {
                 L.s(root, "OnClick " + position);
+                if(isOnSelectMode) {
+                    /*boolean currentState = adapter.getTracking().get(position);
+                    view.setSelected(!currentState);
+                    adapter.getTracking().set(position, !currentState);*/
+                    adapter.setSelectedState(position);
+                }
             }
 
             @Override
             public void onLongClick(View view, int position) {
                 L.m("OnLongClick " + position);
-                ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
+                if(!isOnSelectMode) {
+                    isOnSelectMode = true;
+                    /*adapter.initTrackingList();
+                    view.setSelected(true);*/
+                    adapter.setSelectedState(position);
+                    actionMode = ((AppCompatActivity) getActivity()).startSupportActionMode(actionModeCallback);
+                } else {
+                    /*boolean currentState = adapter.getTracking().get(position);
+                    view.setSelected(!currentState);
+                    adapter.getTracking().set(position, !currentState);*/
+                    adapter.setSelectedState(position);
+                }
             }
         }));
 
@@ -127,10 +155,15 @@ public class NotificationFragment extends Fragment {
      * Sample Data
      */
     private void initData() {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             notifications.add(new Notification("" + i, "Maria's just commented in your post"));
         }
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onUnselectedAll() {
+        actionMode.finish();
     }
 
     public interface ClickListener {
