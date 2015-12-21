@@ -22,11 +22,13 @@
         <!--<item name="android:actionModeSplitBackground">@color/colorPrimaryDark</item>-->
 
         <!-- use bellow attribute for close button of action mode -->
-        <item name="actionModeCloseButtonStyle">@style/CloseButtonStyle</item>
         <item name="actionModeCloseDrawable">@drawable/ic_close</item>
+        <item name="actionModeCloseButtonStyle">@style/CloseButtonStyle</item>
 
         <!-- use bellow attribute for three-dot button (button fro open menu) of action mode -->
         <item name="android:actionOverflowButtonStyle">@style/OverFlowButtonStyle</item>
+        <!-- for under Adnroid 5.0-->
+        <item name="actionOverflowButtonStyle">@style/OverFlowButtonStyle</item>
     </style>
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
@@ -57,7 +59,8 @@
         <item name="android:padding">12dp</item>
         <item name="android:adjustViewBounds">true</item>
         <item name="android:visibility">visible</item>
-        <item name="android:background">?android:selectableItemBackgroundBorderless</item>
+        <!-- crash if Android < 5.0 (if input line below) -->
+        <!--<item name="background">?android:selectableItemBackgroundBorderless</item>-->
     </style>
 
     <!-- Tab Layout -->
